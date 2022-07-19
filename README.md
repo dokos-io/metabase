@@ -1,3 +1,5 @@
+# Original work by: https://github.com/pipech/frappe-metabase
+
 ## [Metabase](https://github.com/metabase/metabase) integration for [Frappe web framework](https://github.com/frappe/frappe)
 
 ![Metabase ERPNext integration](readme_assets/metabase_frappe-min.gif)
