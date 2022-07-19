@@ -7,9 +7,9 @@
  "modified": "2019-11-13 14:45:20.287619",
  "modified_by": "Administrator",
  "module": "Metabase Integration",
- "name": "metabase-dashboard",
+ "name": "metabase-dashboard-view",
  "owner": "Administrator",
- "page_name": "Metabase Dashboard",
+ "page_name": "Metabase Dashboard View",
  "roles": [
   {
    "role": "All"

@@ -1,10 +1,10 @@
 /* eslint require-jsdoc: 0 */
 
-frappe.pages['metabase-dashboard'].on_page_load = (wrapper) => {
+frappe.pages['metabase-dashboard-view'].on_page_load = (wrapper) => {
 	// init page
 	const page = frappe.ui.make_app_page({
 		'parent': wrapper,
-		'title': 'Dashboard',
+		'title': null,
 		'single_column': true,
 	});
 
@@ -100,7 +100,7 @@ class MetabaseDashboard {
 						},
 					};
 				},
-				'placeholder': 'Select Dashboard',
+				'placeholder': __('Select Dashboard'),
 			},
 			'render_input': true,
 		});
