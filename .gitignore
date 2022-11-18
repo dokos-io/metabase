@@ -4,3 +4,4 @@
 *.swp
 tags
 metabase_integration/docs/current
+metabase_integration/public/dist
