@@ -137,22 +137,6 @@ frappe.views.Workspace.prototype.initialize_editorjs = function(blocks) {
 		});
 }
 
-const _get_original_actions_menu_items = frappe.views.ListView.prototype.get_actions_menu_items;
-
-const print_selected_items = () => {
-    frappe.msgprint("OK");
-}
-
-frappe.views.ListView.prototype.get_actions_menu_items = function() {
-    const actions_menu_items = _get_original_actions_menu_items.call(this)
-    actions_menu_items.forEach(f => {
-        if (f.label == __("Print")) {
-            f.action = print_selected_items
-        }
-    })
-    return actions_menu_items
-}
-
 
 document.addEventListener("DOMContentLoaded", function() {
     Object.assign(frappe.workspace_block.blocks, {
