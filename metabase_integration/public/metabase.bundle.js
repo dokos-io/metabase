@@ -69,77 +69,30 @@ export default class Metabase extends Block {
 
 frappe.provide("frappe.views")
 
-frappe.views.Workspace.prototype.initialize_editorjs = function(blocks) {
-		this.tools = {
-			header: {
-				class: this.blocks["header"],
-				inlineToolbar: ["HeaderSize", "bold", "italic", "link"],
-				config: {
-					default_size: 4,
-				},
-			},
-			paragraph: {
-				class: this.blocks["paragraph"],
-				inlineToolbar: ["HeaderSize", "bold", "italic", "link"],
-				config: {
-					placeholder: __("Choose a block or continue typing"),
-				},
-			},
-			chart: {
-				class: this.blocks["chart"],
-				config: {
-					page_data: this.page_data || [],
-				},
-			},
-            
-			card: {
-				class: this.blocks["card"],
-				config: {
-					page_data: this.page_data || [],
-				},
-			},
-			shortcut: {
-				class: this.blocks["shortcut"],
-				config: {
-					page_data: this.page_data || [],
-				},
-			},
-			onboarding: {
-				class: this.blocks["onboarding"],
-				config: {
-					page_data: this.page_data || [],
-				},
-			},
-			quick_list: {
-				class: this.blocks["quick_list"],
-				config: {
-					page_data: this.page_data || [],
-				},
-			},
-			spacer: this.blocks["spacer"],
-			HeaderSize: frappe.workspace_block.tunes["header_size"],
-            metabase: {
-				class: this.blocks["metabase"],
-				config: {
-                    default_size: 12,
-					page_data: this.page_data || [],
-				},
-			},
-		};
-		this.editor = new EditorJS({
-			data: {
-				blocks: blocks || [],
-			},
-			tools: this.tools,
-			autofocus: false,
-			readOnly: true,
-			logLevel: "ERROR",
-		});
-}
+window.addEventListener("load", () => {
+	// Monkey Patch the initialize_editorjs method of the Workspace class
+	const originalMethod = frappe.views.Workspace.prototype.initialize_editorjs
+	frappe.views.Workspace.prototype.initialize_editorjs = function initialize_editorjs_monkeypatched_metabase (...args) {
+		// Call original method
+		const out = originalMethod.apply(this, args)
 
+		// Update `tools` and `blocks` to add Metabase
+		// The following code works because EditorJS is initialized
+		// with references to these objects.
+		this.blocks["metabase"] = Metabase
+		this.tools["metabase"] = {
+			class: this.blocks["metabase"],
+			config: {
+				default_size: 12,
+				page_data: this.page_data || [],
+			},
+		}
 
-document.addEventListener("DOMContentLoaded", function() {
-    Object.assign(frappe.workspace_block.blocks, {
-        metabase: Metabase,
-    })
+		if (frappe.workspace_block.blocks && !("metabase" in frappe.workspace_block.blocks)) {
+			throw new Error("Metabase: initialize_editorjs monkey patch failed?")
+		}
+
+		return out
+	}
 })
+
