@@ -16,7 +16,7 @@ export default class Metabase extends Block {
 	constructor({ data, api, config, readOnly, block }) {
 		super({ data, api, config, readOnly, block });
 		this.col = this.data.col ? this.data.col : "12";
-        readOnly = 0;
+		readOnly = 0;
 		this.allow_customization = !this.readOnly;
 		this.options = {
 			allow_sorting: this.allow_customization,
@@ -28,27 +28,27 @@ export default class Metabase extends Block {
 			min_width: 6,
 			max_widget_count: 2,
 		};
-        this.iFrameUrl = "";
+		this.iFrameUrl = "";
 	}
 
 	render() {
 		this.wrapper = document.createElement("div");
 		this.iFrameUrl = `
-            <script id="resizer" src="http://localhost:3000/app/iframeResizer.js"></script>
-            <iframe
-                src="http://localhost:3000/embed/dashboard/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6eyJkYXNoYm9hcmQiOjF9LCJwYXJhbXMiOnt9LCJleHAiOjE2Njg3NjkxODF9.N8TXahc_JFp1Et_Z5YWwU0F8u0ovne1uUrmTPTEhYi4#bordered=false&titled=false"
-                frameborder="0"
-                width=100%
-                onload="iFrameResize({}, this)"
-                allowtransparency>
-            </iframe>`
+			<script id="resizer" src="http://localhost:3000/app/iframeResizer.js"></script>
+			<iframe
+				src="http://localhost:3000/embed/dashboard/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6eyJkYXNoYm9hcmQiOjF9LCJwYXJhbXMiOnt9LCJleHAiOjE2Njg3NjkxODF9.N8TXahc_JFp1Et_Z5YWwU0F8u0ovne1uUrmTPTEhYi4#bordered=false&titled=false"
+				frameborder="0"
+				width=100%
+				onload="iFrameResize({}, this)"
+				allowtransparency>
+			</iframe>`
 
-        $(this.iFrameUrl).appendTo(this.wrapper);
+		$(this.iFrameUrl).appendTo(this.wrapper);
 		return this.wrapper;
 	}
 
 	validate(savedData) {
-        console.log(savedData)
+		console.log(savedData)
 		if (!savedData.chart_name) {
 			return false;
 		}
@@ -57,13 +57,13 @@ export default class Metabase extends Block {
 	}
 
 	save() {
-        console.log("SAVE")
+		console.log("SAVE")
 		// return {
 		// 	chart_name: this.wrapper.getAttribute("chart_name"),
 		// 	col: this.get_col(),
 		// 	new: this.new_block_widget,
 		// };
-        return {}
+		return {}
 	}
 }
 
