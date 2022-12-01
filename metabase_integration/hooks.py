@@ -15,7 +15,7 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/metabase_integration/css/metabase_integration.css"
+app_include_css = "metabase.bundle.css"
 app_include_js = "metabase.bundle.js"
 
 # include js, css files in header of web template

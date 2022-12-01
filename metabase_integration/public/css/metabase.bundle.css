@@ -1,0 +1,18 @@
+.metabase-block__iframe {
+	--h: 25; /* Percentage */
+	--metabase-block-iframe-height: calc((var(--h, 100) / 100) * 800px);
+
+	height: var(--metabase-block-iframe-height, 200px);
+
+	border-radius: 5px;
+	box-shadow: 0 0 0 2px var(--bg-darkgray);
+}
+
+.metabase-block__label {
+	font-weight: bold
+}
+
+.metabase-block__header {
+	padding-bottom: 0.5rem;
+}
+
