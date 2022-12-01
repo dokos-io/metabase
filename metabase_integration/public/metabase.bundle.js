@@ -15,7 +15,7 @@ class MetabaseEditDialog extends get_dialog_constructor() {
 			{
 				fieldname: "height",
 				fieldtype: "Int",
-				label: __("Widget Height"),
+				label: __("Widget Height (%)"),
 				default: 25,
 			},
 		]
@@ -61,7 +61,8 @@ export default class Metabase extends Block {
 		this.wrapper.classList.add("metabase-block", "widget");
 
 		const $header = $(`<div class="metabase-block__header widget-head"></div>`).appendTo(this.wrapper);
-		const $label = $(`<div class="metabase-block__label">Metabase Dashboard</div>`).appendTo($header);
+		// To use if you want to have a label
+		// const $label = $(`<div class="metabase-block__label">${__("Metabase Dashboard")}</div>`).appendTo($header);
 
 		// Set-up controls
 		if (!this.readOnly) {
