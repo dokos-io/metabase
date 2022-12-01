@@ -1,4 +1,5 @@
 {
+ "actions": [],
  "autoname": "field:dashboard_name",
  "creation": "2019-10-09 14:04:53.307178",
  "doctype": "DocType",
@@ -13,7 +14,9 @@
   "column_break_8",
   "is_active",
   "show_border",
-  "show_title"
+  "show_title",
+  "section_break_10",
+  "linked_doctypes"
  ],
  "fields": [
   {
@@ -67,12 +70,24 @@
    "fieldname": "is_active",
    "fieldtype": "Check",
    "label": "Is Active"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "linked_doctypes",
+   "fieldtype": "Table MultiSelect",
+   "label": "Linked DocTypes",
+   "options": "Metabase Linked DocTypes"
   }
  ],
- "modified": "2022-07-19 16:36:54.057041",
+ "links": [],
+ "modified": "2022-12-01 10:22:06.437853",
  "modified_by": "Administrator",
  "module": "Metabase Integration",
  "name": "Metabase Dashboard",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -91,5 +106,6 @@
  "search_fields": "dashboard_name",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
