@@ -12,7 +12,7 @@ frappe.views.MetabaseView = class MetabaseView extends frappe.views.ListView {
 		this.hide_filters = true;
 		this.hide_sort_selector = true;
 		super.setup_page();
-		this.toggle_side_bar(false)
+		this.toggle_side_bar(true)
 	}
 
 	setup_view() {
